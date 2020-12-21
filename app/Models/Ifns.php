@@ -16,4 +16,8 @@ class Ifns extends Model
     public function recipient() {
         return $this->belongsTo('App\Models\Recipient');
     }
+
+    public function paymentDocuments() {
+        return $this->hasMany('App\Models\PaymentDocument');
+    }
 }

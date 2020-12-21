@@ -9,19 +9,19 @@ class PaymentDocument extends Model
 {
     use HasFactory;
 
-    public function subject() {
-        return $this->belongsTo('App\Models\Subject');
-    }
-
-    public function payer() {
-        return $this->belongsTo('App\Models\Payer');
-    }
-
     public function kbk() {
         return $this->belongsTo('App\Models\Kbk');
     }
 
     public function payerStatus() {
         return $this->belongsTo('App\Models\PayerStatus');
+    }
+
+    public function oktmo() {
+        return $this->belongsTo('App\Models\Oktmo');
+    }
+
+    public function ifns() {
+        return $this->belongsTo('App\Models\Ifns');
     }
 }

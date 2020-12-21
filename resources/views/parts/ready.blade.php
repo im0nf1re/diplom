@@ -11,3 +11,6 @@
         <a href='javascript:void(0)' class="btn btn-primary float-right" data-save-payment-document>Сформировать</a>
     </div>
 </div>
+<form action="{{ route('store') }}" style="display: none" id="saveForm" method="post">
+    @csrf
+</form>

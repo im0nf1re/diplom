@@ -1,11 +1,20 @@
 <style>
+    @font-face {
+        font-family: arialuni; /* Гарнитура шрифта */
+        src: url(/fonts/arialuni.ttf); /* Путь к файлу со шрифтом */
+    }
+    * {
+        font-family: "DejaVu Sans";
+    }
     td {
         border: 3px solid black;
+        text-align: left;
+        vertical-align: top;
     }
 </style>
 
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <meta name="viewport"
@@ -14,14 +23,13 @@
     <title>Document</title>
 </head>
 <body>
-<div style="height: 1000px; width: 960px; margin: auto">
-    <table height="100%" border="3px" width="100%" style="border-collapse: collapse;">
+    <table height="1000px" border="2px" width="100%" style="border-collapse: collapse; page-break-inside:avoid">
     <!-- Индекс документа -->
     <tr height="3%">
-        <td style="width: 30%; border:none;"><i>Индекс док</i></td>
-        <td style="width: 35%"></td>
-        <td style="width: 17%"></td>
-        <td style="width: 18%"></td>
+        <td style="width: 30%; border:none;"></td>
+        <td style="width: 35%"><i>Индекс док</i></td>
+        <td style="width: 17%"><i>(101)</i></td>
+        <td style="width: 18%"><i>Форма №ПД (налог)</i></td>
     </tr>
     <!-- Штрихи -->
     <tr height="9%">
@@ -33,60 +41,60 @@
     <!-- Фио -->
     <tr height="9%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 35%;"></td>
-        <td style="width: 35%;" colspan="2"></td>
+        <td style="width: 35%;"><i>ФИО</i></td>
+        <td style="width: 35%;" colspan="2"><i>Адрес</i></td>
     </tr>
     <!-- Инн -->
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 35%;"></td>
-        <td style="width: 30%" colspan="2"></td>
+        <td style="width: 35%;"><i>ИНН</i></td>
+        <td style="width: 30%" colspan="2"><i>Сумма</i></td>
     </tr>
     <!-- Банк -->
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td rowspan="2" style="width: 35%;"></td>
-        <td style="width: 30%" colspan="2"></td>
+        <td rowspan="2" style="width: 35%;"><i>Банк получателя</i></td>
+        <td style="width: 30%" colspan="2"><i>БИК</i></td>
     </tr>
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 30%" colspan="2"></td>
+        <td style="width: 30%" colspan="2"><i>Сч.№</i></td>
     </tr>
     <!-- Получатель -->
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td rowspan="3" style="width: 35%;"></td>
-        <td style="width: 30%" colspan="2"></td>
+        <td rowspan="3" style="width: 35%;"><i>Получатель</i></td>
+        <td style="width: 30%" colspan="2"><i>Сч.№</i></td>
     </tr>
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 30%" colspan="2"></td>
+        <td style="width: 30%" colspan="2"><i>ИНН</i></td>
     </tr>
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 30%" colspan="2"></td>
+        <td style="width: 30%" colspan="2"><i>КПП</i></td>
     </tr>
     <!-- КБК  -->
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 35%;"></td>
-        <td style="width: 30%" colspan="2"></td>
+        <td style="width: 35%;"><i>КБК</i></td>
+        <td style="width: 30%" colspan="2"><i>ОКТМО</i></td>
     </tr>
     <!-- Пусто -->
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
         <td rowspan="2" style="width: 35%;" colspan="2"></td>
-        <td style="width: 18%"></td>
+        <td style="width: 18%"><i>(107)</i></td>
     </tr>
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 18%"></td>
+        <td style="width: 18%"><i>(106)</i></td>
     </tr>
     <!-- Дата -->
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 35%"></td>
-        <td style="width: 35%" colspan="2"></td>
+        <td style="width: 35%"><i>Дата</i></td>
+        <td style="width: 35%" colspan="2"><i>Подпись</i></td>
     </tr>
 
     <!-- Разрез -->
@@ -165,7 +173,7 @@
     </tr>
 
 </table>
-</div>
+
 </body>
 </html>
 

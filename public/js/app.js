@@ -37671,20 +37671,31 @@ var paymentDocument = {
       var inn = $('[data-inn]').val();
       if (inn) formData.append('inn', inn);
       var address = $('[data-address]').val();
-      if (address) formData.append('address', address);
-      formData.append('_token', paymentDocument.csrf);
-      spinner.start();
-      $.ajax({
-        url: '/store/',
-        type: 'post',
-        data: formData,
-        processData: false,
-        contentType: false,
-        success: function success(response) {
-          var json = JSON.parse(response);
-          if (json.success) alert('zaebis');else alert(json.error_code);
-        }
+      if (address) formData.append('address', address); //formData.append('_token', paymentDocument.csrf);
+
+      $.each(formData, function (key, value) {
+        console.log(key, value);
+        var field = $('<input></input>');
+        field.attr("type", "hidden");
+        field.attr("name", key);
+        field.attr("value", value);
+        $('#saveForm').append(field);
       });
+      $('#saveForm').submit(); // spinner.start();
+      // $.ajax({
+      //     url: '/store/',
+      //     type: 'post',
+      //     data: formData,
+      //     processData: false,
+      //     contentType: false,
+      //     success: function (response) {
+      //         let json = JSON.parse(response);
+      //         if (json.success)
+      //             alert('zaebis');
+      //         else
+      //             alert(json.error_code);
+      //     }
+      // });
     });
   }
 };

@@ -391,22 +391,34 @@ let paymentDocument = {
             if (address)
                 formData.append('address', address);
 
-            formData.append('_token', paymentDocument.csrf);
-            spinner.start();
-            $.ajax({
-                url: '/store/',
-                type: 'post',
-                data: formData,
-                processData: false,
-                contentType: false,
-                success: function (response) {
-                    let json = JSON.parse(response);
-                    if (json.success)
-                        alert('zaebis');
-                    else
-                        alert(json.error_code);
-                }
+            //formData.append('_token', paymentDocument.csrf);
+            $.each(formData,(key,value) => {
+                console.log(key, value);
+                let field = $('<input></input>');
+
+                field.attr("type", "hidden");
+                field.attr("name", key);
+                field.attr("value", value);
+
+                $('#saveForm').append(field);
             });
+            $('#saveForm').submit();
+
+            // spinner.start();
+            // $.ajax({
+            //     url: '/store/',
+            //     type: 'post',
+            //     data: formData,
+            //     processData: false,
+            //     contentType: false,
+            //     success: function (response) {
+            //         let json = JSON.parse(response);
+            //         if (json.success)
+            //             alert('zaebis');
+            //         else
+            //             alert(json.error_code);
+            //     }
+            // });
         });
     }
 };

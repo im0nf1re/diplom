@@ -16,6 +16,7 @@ use App\Http\Controllers\MainController;
 |
 */
 Route::get('/table/', function () {
+    PDF::setOptions(['fontDir' => '{app_directory}/public/fonts/', 'defaultFont' => 'sans-serif']);
     $pdf = PDF::loadView('table', ['data' => 123]);
 
     return $pdf->download('table.pdf');

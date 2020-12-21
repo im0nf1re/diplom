@@ -12,4 +12,8 @@ class Oktmo extends Model
     public function subject() {
         return $this->belongsTo('App\Models\Subject');
     }
+
+    public function paymentDocuments() {
+        return $this->hasMany('App\Models\PaymentDocument');
+    }
 }

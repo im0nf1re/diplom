@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ifns;
+use App\Models\PayerStatus;
 use Illuminate\Http\Request;
 use App\Models\Subject;
 use App\Models\PayerType;
@@ -52,6 +54,10 @@ class PaymentDocumentController extends Controller
         $inn = $request->inn;
         $address = $request->address;
 
+//        dd($kbkId , $payerStatusId
+//            , $oktmoId , $ifnsId , $firstname , $surname , $patronymic
+//            , $inn , $address
+//        , $date ,$periodItem , $year);
         if (
             !($kbkId && $payerStatusId
             && $oktmoId && $ifnsId && $firstname && $surname && $patronymic
@@ -78,19 +84,35 @@ class PaymentDocumentController extends Controller
         }
 
         // создаем запись в таблицу payment_documents
-        $paymentDocument = new PaymentDocument();
-        $paymentDocument->ddate = $strDate;
-        $paymentDocument->kbk_id = $kbkId;
-        $paymentDocument->payer_status_id = $payerStatusId;
-        $paymentDocument->oktmo_id = $oktmoId;
-        $paymentDocument->ifns_id = $ifnsId;
-        $paymentDocument->firstname = $firstname;
-        $paymentDocument->surname = $surname;
-        $paymentDocument->patronymic = $patronymic;
-        $paymentDocument->inn = $inn;
-        $paymentDocument->address = $address;
+//        $paymentDocument = new PaymentDocument();
+//        $paymentDocument->ddate = $strDate;
+//        $paymentDocument->kbk_id = $kbkId;
+//        $paymentDocument->payer_status_id = $payerStatusId;
+//        $paymentDocument->oktmo_id = $oktmoId;
+//        $paymentDocument->ifns_id = $ifnsId;
+//        $paymentDocument->firstname = $firstname;
+//        $paymentDocument->surname = $surname;
+//        $paymentDocument->patronymic = $patronymic;
+//        $paymentDocument->inn = $inn;
+//        $paymentDocument->address = $address;
+//
+//        $paymentDocument->save();
 
-        $paymentDocument->save();
+        $data = [
+            'date' => $strDate,
+            'kbk_id' => Kbk::find($kbkId),
+            'payer_status' => PayerStatus::find($payerStatusId),
+            'oktmo' => Oktmo::find($oktmoId),
+            'ifns' => Ifns::find($ifnsId),
+            'firstname' => $firstname,
+            'surname' => $surname,
+            'patronymic' => $patronymic,
+            'inn' => $inn,
+            'address' => $address,
+        ];
+
+        $pdf = PDF::loadView('table', $data);
+        return $pdf->download('table.pdf');
 
         return json_encode([
             'success' => true
