@@ -6,11 +6,11 @@
         <select class="form-control" aria-label="Default select example" data-periods>
             <option selected></option>
             @foreach($dataKind->periods as $period)
-                <option value="{{ $period->id }}">{{ $period->name }}</option>
+                <option data-kind="{{ $dataKind->code }}" value="{{ $period->id }}">{{ $period->name }}</option>
             @endforeach
         </select>
     @else
-        <input type="date" class="form-control" data-date="datepicker">
+        <input type="date" class="form-control" data-date="datepicker" data-kind="{{ $dataKind->code }}">
     @endif
 </div>
 <div class="col-md-4" data-period-items>

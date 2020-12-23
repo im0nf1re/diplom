@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ifns;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -24,7 +26,18 @@ class HomeController extends Controller
      */
     public function index()
     {
+        return view('home', ['user' => Auth::user()]);
+    }
 
-        return view('home')->with('ifns', Ifns::all());
+    public function update(Request $request)
+    {
+        $user = Auth::user();
+        $user->firstname = $request->firstname;
+        $user->surname = $request->surname;
+        $user->patronymic = $request->patronymic;
+        $user->inn = $request->inn;
+        $user->address = $request->address;
+        $user->save();
+        return redirect(route('home'));
     }
 }

@@ -8,7 +8,7 @@
         <label>Фамилия:*</label>
     </div>
     <div class="col-md-9">
-        <input type="text" class="form-control" data-surname autocomplete="off">
+        <input type="text" class="form-control" data-surname autocomplete="off" value="{{ (Auth::check() ? $user->surname : '') }}">
     </div>
 </div>
 <div class="row form-group mb-3 ">
@@ -16,7 +16,7 @@
         <label>Имя:*</label>
     </div>
     <div class="col-md-9">
-        <input type="text" class="form-control" data-firstname autocomplete="off">
+        <input type="text" class="form-control" data-firstname autocomplete="off" value="{{ (Auth::check() ? $user->firstname : '') }}">
     </div>
 </div>
 <div class="row form-group mb-3 ">
@@ -24,7 +24,7 @@
         <label>Отчество:*</label>
     </div>
     <div class="col-md-9">
-        <input type="text" class="form-control" data-patronymic autocomplete="off">
+        <input type="text" class="form-control" data-patronymic autocomplete="off" value="{{ (Auth::check() ? $user->patronymic : '') }}">
     </div>
 </div>
 <div class="row form-group mb-3 ">
@@ -32,7 +32,7 @@
         <label>ИНН:*</label>
     </div>
     <div class="col-md-9">
-        <input type="text" class="form-control" data-inn>
+        <input type="text" class="form-control" data-inn value="{{ (Auth::check() ? $user->inn : '') }}">
     </div>
 </div>
 <div class="row form-group mb-3 ">
@@ -40,7 +40,7 @@
         <label>Адрес места жительства:*</label>
     </div>
     <div class="col-md-9">
-        <input type="text" class="form-control" autocomplete="off" data-address>
+        <input type="text" class="form-control" autocomplete="off" data-address value="{{ (Auth::check() ? $user->address : '') }}">
     </div>
 </div>
 <div class="row form-group">

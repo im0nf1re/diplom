@@ -16,7 +16,6 @@ use App\Http\Controllers\MainController;
 |
 */
 Route::get('/table/', function () {
-    PDF::setOptions(['fontDir' => '{app_directory}/public/fonts/', 'defaultFont' => 'sans-serif']);
     $pdf = PDF::loadView('table', ['data' => 123]);
 
     return $pdf->download('table.pdf');
@@ -31,6 +30,11 @@ Route::post('/store/', [PaymentDocumentController::class, 'store'])->name('store
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::post('/home/update', [App\Http\Controllers\HomeController::class, 'update']);
+Route::get('/documents', [App\Http\Controllers\PaymentDocumentController::class, 'index'])->name('documents');
+
+Route::get('/documents/show/{id}', [App\Http\Controllers\PaymentDocumentController::class, 'show']);
+Route::get('/documents/download/{id}', [App\Http\Controllers\PaymentDocumentController::class, 'download']);
 
 // ajax routes
 Route::post('/ajax/load-oktmos', [PaymentDocumentController::class, 'oktmos']);

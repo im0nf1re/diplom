@@ -14,13 +14,19 @@ use App\Models\Period;
 use App\Models\Kbk;
 use App\Models\PaymentDocument;
 use App\Models\PeriodItem;
+use App\Models\Oktmo;
+use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 // TODO Доделать валидацию в дейтпикере
 class PaymentDocumentController extends Controller
 {
     public function index()
     {
-        return view('main');
+        if (!Auth::check())
+            return redirect(route('main'));
+        return view('paymentDocuments', ['paymentDocuments' => Auth::user()->paymentDocuments()->get()]);
     }
 
     public function create(Request $request)
@@ -53,11 +59,9 @@ class PaymentDocumentController extends Controller
         $patronymic = $request->patronymic;
         $inn = $request->inn;
         $address = $request->address;
+        $amount = $request->amount;
+        $paymentBasis = $request->paymentBasis;
 
-//        dd($kbkId , $payerStatusId
-//            , $oktmoId , $ifnsId , $firstname , $surname , $patronymic
-//            , $inn , $address
-//        , $date ,$periodItem , $year);
         if (
             !($kbkId && $payerStatusId
             && $oktmoId && $ifnsId && $firstname && $surname && $patronymic
@@ -84,23 +88,29 @@ class PaymentDocumentController extends Controller
         }
 
         // создаем запись в таблицу payment_documents
-//        $paymentDocument = new PaymentDocument();
-//        $paymentDocument->ddate = $strDate;
-//        $paymentDocument->kbk_id = $kbkId;
-//        $paymentDocument->payer_status_id = $payerStatusId;
-//        $paymentDocument->oktmo_id = $oktmoId;
-//        $paymentDocument->ifns_id = $ifnsId;
-//        $paymentDocument->firstname = $firstname;
-//        $paymentDocument->surname = $surname;
-//        $paymentDocument->patronymic = $patronymic;
-//        $paymentDocument->inn = $inn;
-//        $paymentDocument->address = $address;
-//
-//        $paymentDocument->save();
+        if (Auth::check())
+        {
+            $paymentDocument = new PaymentDocument();
+            $paymentDocument->ddate = $strDate;
+            $paymentDocument->kbk_id = $kbkId;
+            $paymentDocument->payer_status_id = $payerStatusId;
+            $paymentDocument->oktmo_id = $oktmoId;
+            $paymentDocument->ifns_id = $ifnsId;
+            $paymentDocument->firstname = $firstname;
+            $paymentDocument->surname = $surname;
+            $paymentDocument->patronymic = $patronymic;
+            $paymentDocument->inn = $inn;
+            $paymentDocument->address = $address;
+            $paymentDocument->amount = $amount;
+            $paymentDocument->payment_basis_id = $paymentBasis;
+            $paymentDocument->user_id = Auth::id();
+
+            $paymentDocument->save();
+        }
 
         $data = [
             'date' => $strDate,
-            'kbk_id' => Kbk::find($kbkId),
+            'kbk' => Kbk::find($kbkId),
             'payer_status' => PayerStatus::find($payerStatusId),
             'oktmo' => Oktmo::find($oktmoId),
             'ifns' => Ifns::find($ifnsId),
@@ -109,20 +119,58 @@ class PaymentDocumentController extends Controller
             'patronymic' => $patronymic,
             'inn' => $inn,
             'address' => $address,
+            'amount' => $amount,
+            'index' => (Auth::check() ? $paymentDocument->id : rand()),
+            'paymentBasis' => PaymentBasis::find($paymentBasis),
         ];
 
         $pdf = PDF::loadView('table', $data);
         return $pdf->download('table.pdf');
-
-        return json_encode([
-            'success' => true
-        ]);
-
     }
 
     public function show($id)
     {
-        //
+        $paymentDocument = PaymentDocument::find($id);
+        $data = [
+            'date' => $paymentDocument->ddate,
+            'kbk' => Kbk::find($paymentDocument->kbk_id),
+            'payer_status' => PayerStatus::find($paymentDocument->payer_status_id),
+            'oktmo' => Oktmo::find($paymentDocument->oktmo_id),
+            'ifns' => Ifns::find($paymentDocument->ifns_id),
+            'firstname' => $paymentDocument->firstname,
+            'surname' => $paymentDocument->surname,
+            'patronymic' => $paymentDocument->patronymic,
+            'inn' => $paymentDocument->inn,
+            'address' => $paymentDocument->address,
+            'amount' => $paymentDocument->amount,
+            'index' => $paymentDocument->id,
+            'paymentBasis' => PaymentBasis::find($paymentDocument->payment_basis_id),
+        ];
+
+        return view('table', $data);
+    }
+
+    public function download($id)
+    {
+        $paymentDocument = PaymentDocument::find($id);
+        $data = [
+            'date' => $paymentDocument->ddate,
+            'kbk' => Kbk::find($paymentDocument->kbk_id),
+            'payer_status' => PayerStatus::find($paymentDocument->payer_status_id),
+            'oktmo' => Oktmo::find($paymentDocument->oktmo_id),
+            'ifns' => Ifns::find($paymentDocument->ifns_id),
+            'firstname' => $paymentDocument->firstname,
+            'surname' => $paymentDocument->surname,
+            'patronymic' => $paymentDocument->patronymic,
+            'inn' => $paymentDocument->inn,
+            'address' => $paymentDocument->address,
+            'amount' => $paymentDocument->amount,
+            'index' => $paymentDocument->id,
+            'paymentBasis' => PaymentBasis::find($paymentDocument->payment_basis_id),
+        ];
+
+        $pdf = PDF::loadView('table', $data);
+        return $pdf->download('table.pdf');
     }
 
     public function edit($id)
@@ -187,7 +235,7 @@ class PaymentDocumentController extends Controller
     }
 
     public function fio() {
-        return view('parts.fio');
+        return view('parts.fio', ['user' => Auth::user()]);
     }
 
     public function ready() {

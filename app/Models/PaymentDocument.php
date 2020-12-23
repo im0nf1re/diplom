@@ -24,4 +24,8 @@ class PaymentDocument extends Model
     public function ifns() {
         return $this->belongsTo('App\Models\Ifns');
     }
+
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
 }

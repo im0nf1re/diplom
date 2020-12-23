@@ -341,59 +341,67 @@ let paymentDocument = {
 
     savePaymentDocument() {
         $(document).on('click', '[data-save-payment-document]', function(e) {
-            let formData = new FormData();
+            let fields = {};
 
             // поле ddate
             let periodItem = $('[data-date="period-item"]').val();
             if (periodItem)
-                formData.append('periodItem', periodItem);
+                fields['periodItem'] = periodItem;
             let year = $('[data-date="year"]').val();
             if (year)
-                formData.append('year', year);
+                fields['year'] = year;
             let datepicker = $('[data-date="datepicker"]').val();
             if (datepicker)
-                formData.append('datepicker', datepicker);
+                fields['datepicker'] = datepicker;
 
             // поле kbk_id
             let kbkId = $('[data-kbk]').attr('data-value');
             if (kbkId)
-                formData.append('kbkId', kbkId);
+                fields['kbkId'] = kbkId;
 
             // поле payer_status_id
             let payerStatusId = $('[data-payer-statuses]').val();
             if (payerStatusId)
-                formData.append('payerStatusId', payerStatusId);
+                fields['payerStatusId'] = payerStatusId;
 
             // поле oktmo_id
             let oktmoId = $('[data-oktmo-select]').val();
             if (oktmoId)
-                formData.append('oktmoId', oktmoId);
+                fields['oktmoId'] = oktmoId;
 
             // поле ifns_id
             let ifnsId = $('[data-hidden-ifns-field]').val();
             if (ifnsId)
-                formData.append('ifnsId', ifnsId);
+                fields['ifnsId'] = ifnsId;
 
             // данные о лице
             let firstname = $('[data-firstname]').val();
             if (firstname)
-                formData.append('firstname', firstname);
+                fields['firstname'] = firstname;
             let surname = $('[data-surname]').val();
             if (surname)
-                formData.append('surname', surname);
+                fields['surname'] = surname;
             let patronymic = $('[data-patronymic]').val();
             if (patronymic)
-                formData.append('patronymic', patronymic);
+                fields['patronymic'] = patronymic;
             let inn = $('[data-inn]').val();
             if (inn)
-                formData.append('inn', inn);
+                fields['inn'] = inn;
             let address = $('[data-address]').val();
             if (address)
-                formData.append('address', address);
+                fields['address'] = address;
 
-            //formData.append('_token', paymentDocument.csrf);
-            $.each(formData,(key,value) => {
-                console.log(key, value);
+            // сумма
+            let amount = $('[data-amount]').val();
+            if (amount)
+                fields['amount'] = amount;
+
+            // период
+            let paymentBasis = $('[data-payment-bases]').val();
+            if (paymentBasis)
+                fields['paymentBasis'] = paymentBasis;
+
+            $.each(fields,(key,value) => {
                 let field = $('<input></input>');
 
                 field.attr("type", "hidden");
@@ -404,21 +412,7 @@ let paymentDocument = {
             });
             $('#saveForm').submit();
 
-            // spinner.start();
-            // $.ajax({
-            //     url: '/store/',
-            //     type: 'post',
-            //     data: formData,
-            //     processData: false,
-            //     contentType: false,
-            //     success: function (response) {
-            //         let json = JSON.parse(response);
-            //         if (json.success)
-            //             alert('zaebis');
-            //         else
-            //             alert(json.error_code);
-            //     }
-            // });
+            $(this).hide();
         });
     }
 };

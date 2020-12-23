@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use App\Models\PayerStatus;
 use App\Models\PaymentName;
 use App\Models\PaymentType;
 use App\Models\Kbk;
+use Illuminate\Support\Facades\Auth;
 
 class MainController extends Controller
 {
     public function index() {
         //$this->insertIntoKbk();
         //dd($this->generateKbkNumber());
-        $pdf = PDF::loadView('main');
-        $pdf->download('main.pdf');
+
         return view('main');
     }
 

@@ -5,6 +5,7 @@
     }
     * {
         font-family: "DejaVu Sans";
+        font-size: 15px;
     }
     td {
         border: 3px solid black;
@@ -27,13 +28,13 @@
     <!-- Индекс документа -->
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 35%"><i>Индекс док</i></td>
-        <td style="width: 17%"><i>(101)</i></td>
+        <td style="width: 35%"><i>Индекс док</i> {{ $index }}</td>
+        <td style="width: 17%"><i>(101)</i> {{ $payer_status->code }}</td>
         <td style="width: 18%"><i>Форма №ПД (налог)</i></td>
     </tr>
     <!-- Штрихи -->
     <tr height="9%">
-        <td style="width: 30%; border:none;"></td>
+        <td style="width: 30%; border:none; text-align: center; vertical-align: middle">Извещение</td>
         <td style="width: 35%; border:none;"></td>
         <td style="width: 17%; border:none;"></td>
         <td style="width: 18%; border:none;"></td>
@@ -41,58 +42,58 @@
     <!-- Фио -->
     <tr height="9%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 35%;"><i>ФИО</i></td>
-        <td style="width: 35%;" colspan="2"><i>Адрес</i></td>
+        <td style="width: 35%;"><i>ФИО</i> {{ $surname }} {{ $firstname }} {{ $patronymic }}</td>
+        <td style="width: 35%;" colspan="2"><i>Адрес</i> {{ $address }}</td>
     </tr>
     <!-- Инн -->
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 35%;"><i>ИНН</i></td>
-        <td style="width: 30%" colspan="2"><i>Сумма</i></td>
+        <td style="width: 35%;"><i>ИНН</i> {{ $inn }}</td>
+        <td style="width: 30%" colspan="2"><i>Сумма</i> {{ $amount }}</td>
     </tr>
     <!-- Банк -->
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td rowspan="2" style="width: 35%;"><i>Банк получателя</i></td>
-        <td style="width: 30%" colspan="2"><i>БИК</i></td>
+        <td rowspan="2" style="width: 35%;"><i>Банк получателя</i> {{ $ifns->recipient->bank->name }}</td>
+        <td style="width: 30%" colspan="2"><i>БИК</i> {{ $ifns->recipient->bank->bik }}</td>
     </tr>
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 30%" colspan="2"><i>Сч.№</i></td>
+        <td style="width: 30%" colspan="2"><i>Сч.№</i> 00000000000000000000</td>
     </tr>
     <!-- Получатель -->
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td rowspan="3" style="width: 35%;"><i>Получатель</i></td>
-        <td style="width: 30%" colspan="2"><i>Сч.№</i></td>
+        <td rowspan="3" style="width: 35%;"><i>Получатель</i> {{ $ifns->recipient->name }}</td>
+        <td style="width: 30%" colspan="2"><i>Сч.№</i> {{ $ifns->recipient->account_number }}</td>
     </tr>
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 30%" colspan="2"><i>ИНН</i></td>
+        <td style="width: 30%" colspan="2"><i>ИНН</i> {{ $ifns->recipient->inn }}</td>
     </tr>
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 30%" colspan="2"><i>КПП</i></td>
+        <td style="width: 30%" colspan="2"><i>КПП</i> {{ $ifns->recipient->kpp }}</td>
     </tr>
     <!-- КБК  -->
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 35%;"><i>КБК</i></td>
-        <td style="width: 30%" colspan="2"><i>ОКТМО</i></td>
+        <td style="width: 35%;"><i>КБК</i> {{ $kbk->number }}</td>
+        <td style="width: 30%" colspan="2"><i>ОКТМО</i> {{ $oktmo->code }}</td>
     </tr>
     <!-- Пусто -->
     <tr height="3%">
-        <td style="width: 30%; border:none;"></td>
+        <td style="width: 30%; border:none; text-align: center; vertical-align: middle">Отметки банка</td>
         <td rowspan="2" style="width: 35%;" colspan="2"></td>
-        <td style="width: 18%"><i>(107)</i></td>
+        <td style="width: 18%"><i>(107)</i> {{ $date }}</td>
     </tr>
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 18%"><i>(106)</i></td>
+        <td style="width: 18%"><i>(106)</i> {{ $paymentBasis->code }}</td>
     </tr>
     <!-- Дата -->
     <tr height="3%">
-        <td style="width: 30%; border:none;"></td>
+        <td style="width: 30%;border-bottom:0px;border-left:0px;"></td>
         <td style="width: 35%"><i>Дата</i></td>
         <td style="width: 35%" colspan="2"><i>Подпись</i></td>
     </tr>
@@ -101,75 +102,72 @@
 
     <!-- Индекс документа -->
     <tr height="3%">
-        <td style="width: 30%; border:none; border-top:2px solid black;"></td>
-        <td style="width: 35%"></td>
-        <td style="width: 17%"></td>
-        <td style="width: 18%"></td>
+        <td style="width: 30%;border:none; border-top:2px;"></td>
+        <td style="width: 35%"><i>Индекс док</i> {{ $index }}</td>
+        <td style="width: 17%"><i>(101)</i> {{ $payer_status->code }}</td>
+        <td style="width: 18%"><i>Форма №ПД (налог)</i></td>
     </tr>
 
     <!-- ФИО -->
     <tr height="12%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 35%;"></td>
-        <td style="width: 17%"></td>
-        <td style="width: 18%"></td>
+        <td style="width: 35%;"><i>ФИО</i> {{ $surname }} {{ $firstname }} {{ $patronymic }}</td>
+        <td style="width: 35%;" colspan="2"><i>Адрес</i> {{ $address }}</td>
     </tr>
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 35%;"></td>
-        <td style="width: 17%"></td>
-        <td style="width: 18%"></td>
+        <td style="width: 35%;"><i>ИНН</i> {{ $inn }}</td>
+        <td style="width: 30%" colspan="2"><i>Сумма</i> {{ $amount }}</td>
     </tr>
 
     <!-- Банк -->
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td rowspan="2" style="width: 35%;"></td>
-        <td style="width: 17%"></td>
-        <td style="width: 18%"></td>
+        <td rowspan="2" style="width: 35%;"><i>Банк получателя</i> {{ $ifns->recipient->bank->name }}</td>
+        <td style="width: 30%" colspan="2"><i>БИК</i> {{ $ifns->recipient->bank->bik }}</td>
     </tr>
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 30%" colspan="2"></td>
+        <td style="width: 30%" colspan="2"><i>Сч.№</i> 00000000000000000000</td>
     </tr>
 
     <!-- Получатель -->
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td rowspan="3" style="width: 35%;"></td>
-        <td style="width: 30%" colspan="2"></td>
+        <td rowspan="3" style="width: 35%;"><i>Получатель</i> {{ $ifns->recipient->name }}</td>
+        <td style="width: 30%" colspan="2"><i>Сч.№</i> {{ $ifns->recipient->account_number }}</td>
     </tr>
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 30%" colspan="2"></td>
+        <td style="width: 30%" colspan="2"><i>ИНН</i> {{ $ifns->recipient->inn }}</td>
     </tr>
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 30%" colspan="2"></td>
+        <td style="width: 30%" colspan="2"><i>КПП</i> {{ $ifns->recipient->kpp }}</td>
     </tr>
 
     <!-- КБК  -->
     <tr height="3%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 35%;"></td>
-        <td style="width: 30%" colspan="2"></td>
+        <td style="width: 35%;"><i>КБК</i> {{ $kbk->number }}</td>
+        <td style="width: 30%" colspan="2"><i>ОКТМО</i> {{ $oktmo->code }}</td>
     </tr>
 
     <!-- Пусто -->
     <tr height="6%">
-        <td style="width: 30%; border:none;"></td>
+        <td style="width: 30%; border:none; text-align: center; vertical-align: middle">Квитанция</td>
         <td rowspan="2" style="width: 35%;" colspan="2"></td>
-        <td style="width: 18%"></td>
+        <td style="width: 18%"><i>(107)</i> {{ $date }}</td>
     </tr>
     <tr height="6%">
-        <td style="width: 30%; border:none;"></td>
-        <td style="width: 18%"></td>
+        <td style="width: 30%; border:none; text-align: center; vertical-align: middle">Отметки банка</td>
+        <td style="width: 18%"><i>(106)</i> {{ $paymentBasis->code }}</td>
     </tr>
     <!-- Дата -->
     <tr height="4%">
         <td style="width: 30%; border:none;"></td>
-        <td style="width: 35%"></td>
-        <td style="width: 35%" colspan="2"></td>
+        <td style="width: 35%"><i>Дата</i></td>
+        <td style="width: 35%" colspan="2"><i>Подпись</i></td>
     </tr>
 
 </table>

@@ -34,7 +34,7 @@
         <label>Сумма платежа:*</label>
     </div>
     <div class="col-md-6">
-        <input type="text" class="form-control">
+        <input type="text" class="form-control" data-amount>
     </div>
 </div>
 <div class="row form-group">
