@@ -1,8 +1,4 @@
 <style>
-    @font-face {
-        font-family: arialuni; /* Гарнитура шрифта */
-        src: url(/fonts/arialuni.ttf); /* Путь к файлу со шрифтом */
-    }
     * {
         font-family: "DejaVu Sans";
         font-size: 15px;
