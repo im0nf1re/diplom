@@ -62,25 +62,7 @@
                                 </button>
                             </div>
                         </div>
-    {{--                    <table>--}}
-    {{--                        <p class="title">ИФНС</p>--}}
-    {{--                        <tr>--}}
-    {{--                            <th>Название</th>--}}
-    {{--                            <th>Код</th>--}}
-    {{--                        </tr>--}}
-    {{--                        @foreach($ifns as $item)--}}
-    {{--                            <tr>--}}
-    {{--                                <td>{{ $item->name }}</td>--}}
-    {{--                                <td>{{ $item->code }}</td>--}}
-    {{--                                <td><button>Изменить</button></td>--}}
-    {{--                            </tr>--}}
-    {{--                        @endforeach--}}
-    {{--                        <tr>--}}
-    {{--                            <td><input type="text" style="width: 100%"></td>--}}
-    {{--                            <td><input type="text"></td>--}}
-    {{--                            <td><button>Сохранить</button></td>--}}
-    {{--                        </tr>--}}
-    {{--                    </table>--}}
+
                     </div>
                 </form>
             </div>

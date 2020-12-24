@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bank;
 use Illuminate\Http\Request;
 use App\Models\PayerStatus;
 use App\Models\PaymentName;
@@ -15,6 +16,8 @@ class MainController extends Controller
         //$this->insertIntoKbk();
         //dd($this->generateKbkNumber());
 
+        //$banks = Bank::all();
+        //dd($banks->toArray());
         return view('main');
     }
 

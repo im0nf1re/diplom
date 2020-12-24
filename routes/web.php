@@ -15,14 +15,6 @@ use App\Http\Controllers\MainController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/table/', function () {
-    $pdf = PDF::loadView('table', ['data' => 123]);
-
-    return $pdf->download('table.pdf');
-    return view('table');
-});
-
-
 Route::get('/', [MainController::class, 'index'])->name('main');
 Route::get('/pay/', [PaymentDocumentController::class, 'create']);
 Route::post('/store/', [PaymentDocumentController::class, 'store'])->name('store');
@@ -35,6 +27,11 @@ Route::get('/documents', [App\Http\Controllers\PaymentDocumentController::class,
 
 Route::get('/documents/show/{id}', [App\Http\Controllers\PaymentDocumentController::class, 'show']);
 Route::get('/documents/download/{id}', [App\Http\Controllers\PaymentDocumentController::class, 'download']);
+
+// table routes
+Route::get('/tables', [App\Http\Controllers\HomeController::class, 'tables'])->name('tables');
+Route::get('/tables/{name}', [App\Http\Controllers\HomeController::class, 'table']);
+Route::post('/tables/{name}/update', [App\Http\Controllers\HomeController::class, 'updateTable']);
 
 // ajax routes
 Route::post('/ajax/load-oktmos', [PaymentDocumentController::class, 'oktmos']);
