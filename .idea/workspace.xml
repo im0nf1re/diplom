@@ -2,18 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5074a822-3a19-459d-b9e2-07c22662cb2a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/nalog.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/nalog.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/MainController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PaymentDocumentController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PaymentDocumentController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/paymentDocument.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/paymentDocument.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/parts/dataKind.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/parts/dataKind.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/parts/payerStatus.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/parts/payerStatus.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/parts/periodItem.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/parts/periodItem.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/table.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/table.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +123,6 @@
       <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
       <path value="$PROJECT_DIR$/vendor/sebastian/object-enumerator" />
       <path value="$PROJECT_DIR$/vendor/phpunit/php-file-iterator" />
-      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
       <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
       <path value="$PROJECT_DIR$/vendor/sebastian/environment" />
       <path value="$PROJECT_DIR$/vendor/sebastian/recursion-context" />
@@ -180,6 +172,7 @@
       <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
       <path value="$PROJECT_DIR$/vendor/react/promise" />
       <path value="$PROJECT_DIR$/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-code-coverage" />
     </include_path>
   </component>
   <component name="ProjectId" id="1igVkxxDwTPPeRUWy4vKpDuQNmc" />
@@ -260,6 +253,7 @@
       <workItem from="1608620044184" duration="1352000" />
       <workItem from="1608699578932" duration="22000" />
       <workItem from="1608725502641" duration="10376000" />
+      <workItem from="1608809225954" duration="1236000" />
     </task>
     <servers />
   </component>
