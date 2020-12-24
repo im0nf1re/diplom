@@ -131,6 +131,36 @@ LOCK TABLES `failed_jobs` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `fields`
+--
+
+DROP TABLE IF EXISTS `fields`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `fields` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `table_id` bigint unsigned NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fields_table_id_foreign` (`table_id`),
+  CONSTRAINT `fields_table_id_foreign` FOREIGN KEY (`table_id`) REFERENCES `tables` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `fields`
+--
+
+LOCK TABLES `fields` WRITE;
+/*!40000 ALTER TABLE `fields` DISABLE KEYS */;
+INSERT INTO `fields` VALUES (1,'Название','name',1,NULL,NULL),(2,'БИК','bik',1,NULL,NULL),(3,'Id вида даты','data_kind_id',2,NULL,NULL),(4,'Id основания платежа','payment_basis_id',2,NULL,NULL),(7,'Название','name',3,NULL,NULL),(8,'Код','code',3,NULL,NULL),(9,'Тип поля','field_type',3,NULL,NULL),(10,'Код','code',4,NULL,NULL),(11,'Название','name',4,NULL,NULL),(12,'Id субъекта','subject_id',4,NULL,NULL),(13,'Id получателя','recipient_id',4,NULL,NULL),(14,'Номер','number',5,NULL,NULL),(15,'Цена','price',5,NULL,NULL),(16,'Id наименования платежа','payment_name_id',5,NULL,NULL),(17,'Id типа платежа','payment_type_id',5,NULL,NULL),(18,'Id ОКТМО','oktmo_id',5,NULL,NULL),(19,'Id ИФНС','ifns_id',5,NULL,NULL),(20,'Код','code',6,NULL,NULL),(21,'Название','name',6,NULL,NULL),(22,'Id субъекта','subject_id',6,NULL,NULL),(23,'Название','name',7,NULL,NULL),(24,'Id типа плательщика','payer_type_id',7,NULL,NULL),(25,'Код','code',7,NULL,NULL),(26,'Id основания платежа','payment_basis_id',8,NULL,NULL),(27,'Id типа плательщика','payer_type_id',8,NULL,NULL),(28,'Id вида платежа','payment_kind_id',9,NULL,NULL),(29,'Id типа плательщика','payer_type_id',9,NULL,NULL),(30,'Название','name',10,NULL,NULL),(31,'Название','name',11,NULL,NULL),(32,'Код','code',11,NULL,NULL),(33,'Дата','ddate',12,NULL,NULL),(34,'Id КБК','kbk_id',12,NULL,NULL),(35,'Id статуса плательщика','payer_status_id',12,NULL,NULL),(36,'Id ОКТМО','oktmo_id',12,NULL,NULL),(37,'Id ИФНС','ifns_id',12,NULL,NULL),(38,'Имя','firstname',12,NULL,NULL),(39,'Фамилия','surname',12,NULL,NULL),(40,'Отчество','patronymic',12,NULL,NULL),(41,'ИНН','inn',12,NULL,NULL),(42,'Адрес','address',12,NULL,NULL),(43,'Сумма','amount',12,NULL,NULL),(44,'Id основания платежа','payment_basis_id',12,NULL,NULL),(45,'Id пользователя','user_id',12,NULL,NULL),(46,'Название','name',13,NULL,NULL),(47,'Id наименования платежа','payment_name_id',14,NULL,NULL),(48,'Id типа платежа','payment_type_id',14,NULL,NULL),(49,'Название','name',15,NULL,NULL),(50,'Id вида платежа','payment_kind_id',15,NULL,NULL),(51,'Название','name',16,NULL,NULL),(52,'Название','name',17,NULL,NULL),(53,'Id периода','period_id',17,NULL,NULL),(54,'Название','name',18,NULL,NULL),(55,'Id вида даты','data_kind_id',18,NULL,NULL),(56,'Название','name',19,NULL,NULL),(57,'ИНН','inn',19,NULL,NULL),(58,'КПП','kpp',19,NULL,NULL),(59,'Номер счета','account_number',19,NULL,NULL),(60,'Id банка','bank_id',19,NULL,NULL),(61,'Название','name',20,NULL,NULL),(62,'Код','code',20,NULL,NULL),(63,'Email','email',21,NULL,NULL),(64,'Имя','firstname',21,NULL,NULL),(65,'Фамилия','surname',21,NULL,NULL),(66,'Отчество','patronymic',21,NULL,NULL),(67,'ИНН','inn',21,NULL,NULL),(68,'Адрес','address',21,NULL,NULL);
+/*!40000 ALTER TABLE `fields` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `ifns`
 --
 
@@ -210,7 +240,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -219,7 +249,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2020_10_12_182300_create_subjects_table',1),(5,'2020_10_12_182852_create_banks_table',1),(6,'2020_10_12_182945_create_recipients_table',1),(7,'2020_10_12_183222_create_ifns_table',1),(8,'2020_10_12_183337_create_oktmos_table',1),(9,'2020_10_12_183450_create_payers_table',1),(10,'2020_10_12_185455_create_data_kinds_table',1),(11,'2020_10_12_185603_create_periods_table',1),(12,'2020_10_12_185652_create_period_items_table',1),(13,'2020_10_12_185747_create_payment_bases_table',1),(14,'2020_10_12_190656_create_data_kind_payment_basis_table',1),(15,'2020_10_12_191036_create_payer_types_table',1),(16,'2020_10_12_191119_create_payment_kinds_table',1),(17,'2020_10_12_191214_create_payment_names_table',1),(18,'2020_10_12_191426_create_payment_basis_payment_name_table',1),(19,'2020_10_12_191608_create_payment_types_table',1),(20,'2020_10_12_191710_create_payment_name_payment_type_table',1),(21,'2020_10_12_191813_create_payer_statuses_table',1),(22,'2020_10_12_191910_create_kbks_table',1),(23,'2020_10_12_192144_create_payment_documents_table',1),(24,'2020_10_23_061347_update_payment_bases_table',2),(25,'2020_10_23_065045_create_payer_type_payment_kind_table',3),(27,'2020_10_23_065250_update_payment_kinds_table',4),(29,'2020_10_23_082911_update_payment_name_table',5),(31,'2020_10_28_080218_update_payment_basis_payment_name_table',6),(33,'2020_11_08_080405_update_payer_statuses_table',7),(34,'2020_12_19_101629_update_kbks_table',8),(35,'2020_12_19_165707_update_kbks_table_payer_status',9),(36,'2020_12_20_064613_update_kbk_table_delete_payer_status',10),(40,'2020_12_20_064919_update_kbks_table_add_payer_status',11),(41,'2020_12_21_114958_update_payment_documents_add_oktmo_id_add_ifns_id',11),(42,'2020_12_21_121424_drop_payers_table',11),(44,'2020_12_23_131442_payment_documents_add_amount',12),(45,'2020_12_23_150116_payment_document_add_payment_basis_id',13),(46,'2020_12_23_160440_payment_document_add_user_id',14),(48,'2020_12_23_164048_users_add_personalities',15);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2020_10_12_182300_create_subjects_table',1),(5,'2020_10_12_182852_create_banks_table',1),(6,'2020_10_12_182945_create_recipients_table',1),(7,'2020_10_12_183222_create_ifns_table',1),(8,'2020_10_12_183337_create_oktmos_table',1),(9,'2020_10_12_183450_create_payers_table',1),(10,'2020_10_12_185455_create_data_kinds_table',1),(11,'2020_10_12_185603_create_periods_table',1),(12,'2020_10_12_185652_create_period_items_table',1),(13,'2020_10_12_185747_create_payment_bases_table',1),(14,'2020_10_12_190656_create_data_kind_payment_basis_table',1),(15,'2020_10_12_191036_create_payer_types_table',1),(16,'2020_10_12_191119_create_payment_kinds_table',1),(17,'2020_10_12_191214_create_payment_names_table',1),(18,'2020_10_12_191426_create_payment_basis_payment_name_table',1),(19,'2020_10_12_191608_create_payment_types_table',1),(20,'2020_10_12_191710_create_payment_name_payment_type_table',1),(21,'2020_10_12_191813_create_payer_statuses_table',1),(22,'2020_10_12_191910_create_kbks_table',1),(23,'2020_10_12_192144_create_payment_documents_table',1),(24,'2020_10_23_061347_update_payment_bases_table',2),(25,'2020_10_23_065045_create_payer_type_payment_kind_table',3),(27,'2020_10_23_065250_update_payment_kinds_table',4),(29,'2020_10_23_082911_update_payment_name_table',5),(31,'2020_10_28_080218_update_payment_basis_payment_name_table',6),(33,'2020_11_08_080405_update_payer_statuses_table',7),(34,'2020_12_19_101629_update_kbks_table',8),(35,'2020_12_19_165707_update_kbks_table_payer_status',9),(36,'2020_12_20_064613_update_kbk_table_delete_payer_status',10),(40,'2020_12_20_064919_update_kbks_table_add_payer_status',11),(41,'2020_12_21_114958_update_payment_documents_add_oktmo_id_add_ifns_id',11),(42,'2020_12_21_121424_drop_payers_table',11),(44,'2020_12_23_131442_payment_documents_add_amount',12),(45,'2020_12_23_150116_payment_document_add_payment_basis_id',13),(46,'2020_12_23_160440_payment_document_add_user_id',14),(48,'2020_12_23_164048_users_add_personalities',15),(52,'2020_12_24_123800_create_tables_table',16),(53,'2020_12_24_123924_create_fields_table',16);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -240,7 +270,7 @@ CREATE TABLE `oktmos` (
   PRIMARY KEY (`id`),
   KEY `oktmos_subject_id_foreign` (`subject_id`),
   CONSTRAINT `oktmos_subject_id_foreign` FOREIGN KEY (`subject_id`) REFERENCES `subjects` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=321 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=322 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -660,7 +690,7 @@ CREATE TABLE `recipients` (
   PRIMARY KEY (`id`),
   KEY `recipients_bank_id_foreign` (`bank_id`),
   CONSTRAINT `recipients_bank_id_foreign` FOREIGN KEY (`bank_id`) REFERENCES `banks` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -698,6 +728,33 @@ LOCK TABLES `subjects` WRITE;
 /*!40000 ALTER TABLE `subjects` DISABLE KEYS */;
 INSERT INTO `subjects` VALUES (1,'01','Республика Адыгея (Адыгея)',NULL,NULL),(2,'02','Республика Башкортостан',NULL,NULL),(3,'03','Республика Бурятия',NULL,NULL),(4,'04','Республика Алтай',NULL,NULL),(5,'05','Республика Дагестан',NULL,NULL),(6,'06','Республика Ингушетия',NULL,NULL),(7,'07','Кабардино-Балкарская Республика',NULL,NULL),(8,'08','Республика Калмыкия',NULL,NULL),(9,'09','Карачаево-Черкесская Республика',NULL,NULL),(10,'10','Республика Карелия',NULL,NULL),(11,'11','Республика Коми',NULL,NULL),(12,'12','Республика Марий Эл',NULL,NULL),(13,'13','Республика Мордовия',NULL,NULL),(14,'14','Республика Саха (Якутия)',NULL,NULL),(15,'15','Республика Северная Осетия - Алания',NULL,NULL),(16,'16','Республика Татарстан (Татарстан)',NULL,NULL),(17,'17','Республика Тыва',NULL,NULL),(18,'18','Удмуртская Республика',NULL,NULL),(19,'19','Республика Хакасия',NULL,NULL),(20,'20','Чеченская Республика',NULL,NULL),(21,'21','Чувашская Республика - Чувашия',NULL,NULL),(22,'22','Алтайский край',NULL,NULL),(23,'23','Краснодарский край',NULL,NULL),(24,'24','Красноярский край',NULL,NULL),(25,'25','Приморский край',NULL,NULL),(26,'26','Ставропольский край',NULL,NULL),(27,'27','Хабаровский край',NULL,NULL),(28,'28','Амурская область',NULL,NULL),(29,'29','Архангельская область',NULL,NULL),(30,'30','Астраханская область',NULL,NULL),(31,'31','Белгородская область',NULL,NULL),(32,'32','Брянская область',NULL,NULL),(33,'33','Владимирская область',NULL,NULL),(34,'34','Волгоградская область',NULL,NULL),(35,'35','Вологодская область',NULL,NULL),(36,'36','Воронежская область',NULL,NULL),(37,'37','Ивановская область',NULL,NULL),(38,'38','Иркутская область',NULL,NULL),(39,'39','Калининградская область',NULL,NULL),(40,'40','Калужская область',NULL,NULL),(41,'41','Камчатский край',NULL,NULL),(42,'42','Кемеровская область - Кузбасс',NULL,NULL),(43,'43','Кировская область',NULL,NULL),(44,'44','Костромская область',NULL,NULL),(45,'45','Курганская область',NULL,NULL),(46,'46','Курская область',NULL,NULL),(47,'47','Ленинградская область',NULL,NULL),(48,'48','Липецкая область',NULL,NULL),(49,'49','Магаданская область',NULL,NULL),(50,'50','Московская область',NULL,NULL),(51,'51','Мурманская область',NULL,NULL),(52,'52','Нижегородская область',NULL,NULL),(53,'53','Новгородская область',NULL,NULL),(54,'54','Новосибирская область',NULL,NULL),(55,'55','Омская область',NULL,NULL),(56,'56','Оренбургская область',NULL,NULL),(57,'57','Орловская область',NULL,NULL),(58,'58','Пензенская область',NULL,NULL),(59,'59','Пермский край',NULL,NULL),(60,'60','Псковская область',NULL,NULL),(61,'61','Ростовская область',NULL,NULL),(62,'62','Рязанская область',NULL,NULL),(63,'63','Самарская область',NULL,NULL),(64,'64','Саратовская область',NULL,NULL),(65,'65','Сахалинская область',NULL,NULL),(66,'66','Свердловская область',NULL,NULL),(67,'67','Смоленская область',NULL,NULL),(68,'68','Тамбовская область',NULL,NULL),(69,'69','Тверская область',NULL,NULL),(70,'70','Томская область',NULL,NULL),(71,'71','Тульская область',NULL,NULL),(72,'72','Тюменская область',NULL,NULL),(73,'73','Ульяновская область',NULL,NULL),(74,'74','Челябинская область',NULL,NULL),(75,'75','Забайкальский край',NULL,NULL),(76,'76','Ярославская область',NULL,NULL),(77,'77','Г.Москва',NULL,NULL),(78,'78','Г.Санкт-Петербург',NULL,NULL),(79,'79','Еврейская автономная область',NULL,NULL),(80,'86','Ханты-Мансийский автономный округ - Югра',NULL,NULL),(81,'87','Чукотский автономный округ',NULL,NULL),(82,'89','Ямало-Ненецкий автономный округ',NULL,NULL),(83,'91','Республика Крым',NULL,NULL),(84,'92','Г.Севастополь',NULL,NULL),(85,'99','Иные территории,включая город и космодром Байконур',NULL,NULL);
 /*!40000 ALTER TABLE `subjects` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tables`
+--
+
+DROP TABLE IF EXISTS `tables`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `tables` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `code` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tables`
+--
+
+LOCK TABLES `tables` WRITE;
+/*!40000 ALTER TABLE `tables` DISABLE KEYS */;
+INSERT INTO `tables` VALUES (1,'Банк','banks',NULL,NULL),(2,'Вид даты - Основание платежа','data_kind_payment_basis',NULL,NULL),(3,'Вид даты','data_kinds',NULL,NULL),(4,'ИФНС','ifns',NULL,NULL),(5,'КБК','kbks',NULL,NULL),(6,'ОКТМО','oktmos',NULL,NULL),(7,'Статус плательщика','payer_statuses',NULL,NULL),(8,'Статус плательщика - Основание платежа','payer_type_payment_basis',NULL,NULL),(9,'Тип плательщика - Вид платежа','payer_type_payment_kind',NULL,NULL),(10,'Вид плательщика','payer_types',NULL,NULL),(11,'Основание платежа','payment_bases',NULL,NULL),(12,'Платежный документ','payment_documents',NULL,NULL),(13,'Вид платежа','payment_kinds',NULL,NULL),(14,'Наименование платежа - Тип платежа','payment_name_payment_type',NULL,NULL),(15,'Наименование платежа','payment_names',NULL,NULL),(16,'Тип платежа','payment_types',NULL,NULL),(17,'Элемент периода','period_items',NULL,NULL),(18,'Период','periods',NULL,NULL),(19,'Получатель','recipients',NULL,NULL),(20,'Субъект','subjects',NULL,NULL),(21,'Пользователь','users',NULL,NULL);
+/*!40000 ALTER TABLE `tables` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -745,4 +802,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-23 22:07:28
+-- Dump completed on 2020-12-24 23:14:33
