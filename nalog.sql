@@ -489,7 +489,7 @@ CREATE TABLE `payment_documents` (
   CONSTRAINT `payment_documents_payer_status_id_foreign` FOREIGN KEY (`payer_status_id`) REFERENCES `payer_statuses` (`id`),
   CONSTRAINT `payment_documents_payment_basis_id_foreign` FOREIGN KEY (`payment_basis_id`) REFERENCES `payment_bases` (`id`),
   CONSTRAINT `payment_documents_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -498,7 +498,7 @@ CREATE TABLE `payment_documents` (
 
 LOCK TABLES `payment_documents` WRITE;
 /*!40000 ALTER TABLE `payment_documents` DISABLE KEYS */;
-INSERT INTO `payment_documents` VALUES (3,'2-й квартал 2020',5144,'2020-12-23 11:07:52','2020-12-23 11:07:52',12,11,4,'Артём','Синкевич','Станиславович','56465135','вафывафыв',1000.00,2,1),(4,'25.12.2020',5133,'2020-12-23 11:33:25','2020-12-23 11:33:25',9,5,3,'Артём','Синкевич','Станиславович','48438163813','пр. Ленина 122 к. 2',100.00,4,1);
+INSERT INTO `payment_documents` VALUES (3,'2-й квартал 2020',5144,'2020-12-23 11:07:52','2020-12-23 11:07:52',12,11,4,'Артём','Синкевич','Станиславович','56465135','вафывафыв',1000.00,2,1),(4,'25.12.2020',5133,'2020-12-23 11:33:25','2020-12-23 11:33:25',9,5,3,'Артём','Синкевич','Станиславович','48438163813','пр. Ленина 122 к. 2',100.00,4,1),(5,'25.12.2020',5153,'2020-12-24 13:31:13','2020-12-24 13:31:13',11,13,2,'Юзер','Юзеров','Юзерович','1231320','ул пушкина',200.00,11,2);
 /*!40000 ALTER TABLE `payment_documents` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -780,7 +780,7 @@ CREATE TABLE `users` (
   `address` text COLLATE utf8mb4_unicode_ci,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -789,7 +789,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Артём','imonfire.prod@gmail.com',NULL,'$2y$10$3MUUShu0S3dWYIg2dTF85.KREUm4mF/YN/P0qsMfQtdIDIdf34oRO','LMrtKJNfdxZzmkKxmikxCFfVEuVhhotqehMuvzsXE6T8bMLOUwfEzfeR7jU7','2020-10-31 16:20:53','2020-12-23 11:55:40','Артём','Синкевич','Станиславович','780204893183','пр. Ленина 122 к. 2');
+INSERT INTO `users` VALUES (1,'admin','admin@admin.com',NULL,'$2y$10$3MUUShu0S3dWYIg2dTF85.KREUm4mF/YN/P0qsMfQtdIDIdf34oRO','4BWRUfWlX0YCWTJeYTKS4GCWXacZhd6nJIpcIEOQs06823hiA8eOgZy0XAm1','2020-10-31 16:20:53','2020-12-23 11:55:40','Артём','Синкевич','Станиславович','780204893183','пр. Ленина 122 к. 2'),(2,'user','user@user.com',NULL,'$2y$10$vxfZEZvg3imIsatH8iJqhuleRe6WdNTUNjUT4Vc40iAPA4xcGFYHK',NULL,'2020-12-24 13:27:25','2020-12-24 13:27:25',NULL,NULL,NULL,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -802,4 +802,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-24 23:14:33
+-- Dump completed on 2020-12-25  0:12:38
