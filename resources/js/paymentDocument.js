@@ -262,7 +262,6 @@ let paymentDocument = {
                     _token: paymentDocument.csrf,
                 },
                 success: function (html) {
-                    console.log(html);
                     $('[data-data-kind]').append(html);
                     spinner.stop();
                 }
@@ -278,7 +277,6 @@ let paymentDocument = {
                 val += $( this ).val();
             });
             spinner.start();
-            console.log(val);
             $.ajax({
                 url: '/ajax/load-period-items',
                 type: 'post',
