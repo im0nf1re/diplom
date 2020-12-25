@@ -37733,8 +37733,8 @@ module.exports = spinner;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\myProjects\nalog\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\myProjects\nalog\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! d:\Users\i.zorina\Desktop\kursach1\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! d:\Users\i.zorina\Desktop\kursach1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
