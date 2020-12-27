@@ -12,6 +12,7 @@ let paymentDocument = {
         this.choosePayerStatus();
         this.choosePaymentBasis();
         this.choosePeriod();
+        this.chooseUserId();
 
         this.removeErrors();
         this.loadKbkCode();
@@ -276,6 +277,9 @@ let paymentDocument = {
             $("[data-periods] option:selected").each(function() {
                 val += $( this ).val();
             });
+            if (val == '')
+                return;
+
             spinner.start();
             $.ajax({
                 url: '/ajax/load-period-items',
@@ -286,6 +290,42 @@ let paymentDocument = {
                 },
                 success: function (html) {
                     $('[data-period-items]').append(html);
+                    spinner.stop();
+                }
+            });
+        }).change();
+    },
+
+    chooseUserId()
+    {
+        $(document).on('change', '[data-user-id]', function () {
+            $('[data-firstname]').empty();
+            $('[data-surname]').empty();
+            $('[data-patronymic]').empty();
+            $('[data-inn]').empty();
+            $('[data-address]').empty();
+            let val = '';
+            $("[data-user-id] option:selected").each(function() {
+                val += $( this ).val();
+            });
+            if (val == '')
+                return;
+
+            spinner.start();
+            $.ajax({
+                url: '/ajax/load-fio',
+                type: 'post',
+                data: {
+                    id: val,
+                    _token: paymentDocument.csrf,
+                },
+                success: function (json) {
+                    json = JSON.parse(json);
+                    $('[data-firstname]').val(json.firstname);
+                    $('[data-surname]').val(json.surname);
+                    $('[data-patronymic]').val(json.patronymic);
+                    $('[data-inn]').val(json.inn);
+                    $('[data-address]').val(json.address);
                     spinner.stop();
                 }
             });
@@ -398,6 +438,11 @@ let paymentDocument = {
             let paymentBasis = $('[data-payment-bases]').val();
             if (paymentBasis)
                 fields['paymentBasis'] = paymentBasis;
+
+            // если работник - id пользователя
+            let userId = $('[data-user-id]').val();
+            if (userId)
+                fields['userId'] = userId;
 
             $.each(fields,(key,value) => {
                 let field = $('<input></input>');

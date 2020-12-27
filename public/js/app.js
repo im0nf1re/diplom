@@ -37351,6 +37351,7 @@ var paymentDocument = {
     this.choosePayerStatus();
     this.choosePaymentBasis();
     this.choosePeriod();
+    this.chooseUserId();
     this.removeErrors();
     this.loadKbkCode();
     this.savePaymentDocument();
@@ -37568,7 +37569,6 @@ var paymentDocument = {
           _token: paymentDocument.csrf
         },
         success: function success(html) {
-          console.log(html);
           $('[data-data-kind]').append(html);
           spinner.stop();
         }
@@ -37582,8 +37582,8 @@ var paymentDocument = {
       $("[data-periods] option:selected").each(function () {
         val += $(this).val();
       });
+      if (val == '') return;
       spinner.start();
-      console.log(val);
       $.ajax({
         url: '/ajax/load-period-items',
         type: 'post',
@@ -37593,6 +37593,38 @@ var paymentDocument = {
         },
         success: function success(html) {
           $('[data-period-items]').append(html);
+          spinner.stop();
+        }
+      });
+    }).change();
+  },
+  chooseUserId: function chooseUserId() {
+    $(document).on('change', '[data-user-id]', function () {
+      $('[data-firstname]').empty();
+      $('[data-surname]').empty();
+      $('[data-patronymic]').empty();
+      $('[data-inn]').empty();
+      $('[data-address]').empty();
+      var val = '';
+      $("[data-user-id] option:selected").each(function () {
+        val += $(this).val();
+      });
+      if (val == '') return;
+      spinner.start();
+      $.ajax({
+        url: '/ajax/load-fio',
+        type: 'post',
+        data: {
+          id: val,
+          _token: paymentDocument.csrf
+        },
+        success: function success(json) {
+          json = JSON.parse(json);
+          $('[data-firstname]').val(json.firstname);
+          $('[data-surname]').val(json.surname);
+          $('[data-patronymic]').val(json.patronymic);
+          $('[data-inn]').val(json.inn);
+          $('[data-address]').val(json.address);
           spinner.stop();
         }
       });
@@ -37677,7 +37709,10 @@ var paymentDocument = {
       if (amount) fields['amount'] = amount; // период
 
       var paymentBasis = $('[data-payment-bases]').val();
-      if (paymentBasis) fields['paymentBasis'] = paymentBasis;
+      if (paymentBasis) fields['paymentBasis'] = paymentBasis; // если работник - id пользователя
+
+      var userId = $('[data-user-id]').val();
+      if (userId) fields['userId'] = userId;
       $.each(fields, function (key, value) {
         var field = $('<input></input>');
         field.attr("type", "hidden");
@@ -37733,8 +37768,8 @@ module.exports = spinner;
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! d:\Users\i.zorina\Desktop\kursach1\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! d:\Users\i.zorina\Desktop\kursach1\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\Артем\Desktop\kursach1\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\Артем\Desktop\kursach1\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

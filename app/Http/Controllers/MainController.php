@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 class MainController extends Controller
 {
     public function index() {
+        //dd(Auth::user()->role()->first()->name);
         //$this->insertIntoKbk();
         //dd($this->generateKbkNumber());
 

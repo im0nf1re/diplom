@@ -240,7 +240,7 @@ CREATE TABLE `migrations` (
   `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -249,7 +249,7 @@ CREATE TABLE `migrations` (
 
 LOCK TABLES `migrations` WRITE;
 /*!40000 ALTER TABLE `migrations` DISABLE KEYS */;
-INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2020_10_12_182300_create_subjects_table',1),(5,'2020_10_12_182852_create_banks_table',1),(6,'2020_10_12_182945_create_recipients_table',1),(7,'2020_10_12_183222_create_ifns_table',1),(8,'2020_10_12_183337_create_oktmos_table',1),(9,'2020_10_12_183450_create_payers_table',1),(10,'2020_10_12_185455_create_data_kinds_table',1),(11,'2020_10_12_185603_create_periods_table',1),(12,'2020_10_12_185652_create_period_items_table',1),(13,'2020_10_12_185747_create_payment_bases_table',1),(14,'2020_10_12_190656_create_data_kind_payment_basis_table',1),(15,'2020_10_12_191036_create_payer_types_table',1),(16,'2020_10_12_191119_create_payment_kinds_table',1),(17,'2020_10_12_191214_create_payment_names_table',1),(18,'2020_10_12_191426_create_payment_basis_payment_name_table',1),(19,'2020_10_12_191608_create_payment_types_table',1),(20,'2020_10_12_191710_create_payment_name_payment_type_table',1),(21,'2020_10_12_191813_create_payer_statuses_table',1),(22,'2020_10_12_191910_create_kbks_table',1),(23,'2020_10_12_192144_create_payment_documents_table',1),(24,'2020_10_23_061347_update_payment_bases_table',2),(25,'2020_10_23_065045_create_payer_type_payment_kind_table',3),(27,'2020_10_23_065250_update_payment_kinds_table',4),(29,'2020_10_23_082911_update_payment_name_table',5),(31,'2020_10_28_080218_update_payment_basis_payment_name_table',6),(33,'2020_11_08_080405_update_payer_statuses_table',7),(34,'2020_12_19_101629_update_kbks_table',8),(35,'2020_12_19_165707_update_kbks_table_payer_status',9),(36,'2020_12_20_064613_update_kbk_table_delete_payer_status',10),(40,'2020_12_20_064919_update_kbks_table_add_payer_status',11),(41,'2020_12_21_114958_update_payment_documents_add_oktmo_id_add_ifns_id',11),(42,'2020_12_21_121424_drop_payers_table',11),(44,'2020_12_23_131442_payment_documents_add_amount',12),(45,'2020_12_23_150116_payment_document_add_payment_basis_id',13),(46,'2020_12_23_160440_payment_document_add_user_id',14),(48,'2020_12_23_164048_users_add_personalities',15),(52,'2020_12_24_123800_create_tables_table',16),(53,'2020_12_24_123924_create_fields_table',16);
+INSERT INTO `migrations` VALUES (1,'2014_10_12_000000_create_users_table',1),(2,'2014_10_12_100000_create_password_resets_table',1),(3,'2019_08_19_000000_create_failed_jobs_table',1),(4,'2020_10_12_182300_create_subjects_table',1),(5,'2020_10_12_182852_create_banks_table',1),(6,'2020_10_12_182945_create_recipients_table',1),(7,'2020_10_12_183222_create_ifns_table',1),(8,'2020_10_12_183337_create_oktmos_table',1),(9,'2020_10_12_183450_create_payers_table',1),(10,'2020_10_12_185455_create_data_kinds_table',1),(11,'2020_10_12_185603_create_periods_table',1),(12,'2020_10_12_185652_create_period_items_table',1),(13,'2020_10_12_185747_create_payment_bases_table',1),(14,'2020_10_12_190656_create_data_kind_payment_basis_table',1),(15,'2020_10_12_191036_create_payer_types_table',1),(16,'2020_10_12_191119_create_payment_kinds_table',1),(17,'2020_10_12_191214_create_payment_names_table',1),(18,'2020_10_12_191426_create_payment_basis_payment_name_table',1),(19,'2020_10_12_191608_create_payment_types_table',1),(20,'2020_10_12_191710_create_payment_name_payment_type_table',1),(21,'2020_10_12_191813_create_payer_statuses_table',1),(22,'2020_10_12_191910_create_kbks_table',1),(23,'2020_10_12_192144_create_payment_documents_table',1),(24,'2020_10_23_061347_update_payment_bases_table',2),(25,'2020_10_23_065045_create_payer_type_payment_kind_table',3),(27,'2020_10_23_065250_update_payment_kinds_table',4),(29,'2020_10_23_082911_update_payment_name_table',5),(31,'2020_10_28_080218_update_payment_basis_payment_name_table',6),(33,'2020_11_08_080405_update_payer_statuses_table',7),(34,'2020_12_19_101629_update_kbks_table',8),(35,'2020_12_19_165707_update_kbks_table_payer_status',9),(36,'2020_12_20_064613_update_kbk_table_delete_payer_status',10),(40,'2020_12_20_064919_update_kbks_table_add_payer_status',11),(41,'2020_12_21_114958_update_payment_documents_add_oktmo_id_add_ifns_id',11),(42,'2020_12_21_121424_drop_payers_table',11),(44,'2020_12_23_131442_payment_documents_add_amount',12),(45,'2020_12_23_150116_payment_document_add_payment_basis_id',13),(46,'2020_12_23_160440_payment_document_add_user_id',14),(48,'2020_12_23_164048_users_add_personalities',15),(52,'2020_12_24_123800_create_tables_table',16),(53,'2020_12_24_123924_create_fields_table',16),(54,'2020_12_26_131006_create_roles_table',17),(55,'2020_12_26_131322_user_add_role',18);
 /*!40000 ALTER TABLE `migrations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -489,7 +489,7 @@ CREATE TABLE `payment_documents` (
   CONSTRAINT `payment_documents_payer_status_id_foreign` FOREIGN KEY (`payer_status_id`) REFERENCES `payer_statuses` (`id`),
   CONSTRAINT `payment_documents_payment_basis_id_foreign` FOREIGN KEY (`payment_basis_id`) REFERENCES `payment_bases` (`id`),
   CONSTRAINT `payment_documents_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -498,7 +498,7 @@ CREATE TABLE `payment_documents` (
 
 LOCK TABLES `payment_documents` WRITE;
 /*!40000 ALTER TABLE `payment_documents` DISABLE KEYS */;
-INSERT INTO `payment_documents` VALUES (3,'2-й квартал 2020',5144,'2020-12-23 11:07:52','2020-12-23 11:07:52',12,11,4,'Артём','Синкевич','Станиславович','56465135','вафывафыв',1000.00,2,1),(4,'25.12.2020',5133,'2020-12-23 11:33:25','2020-12-23 11:33:25',9,5,3,'Артём','Синкевич','Станиславович','48438163813','пр. Ленина 122 к. 2',100.00,4,1),(5,'25.12.2020',5153,'2020-12-24 13:31:13','2020-12-24 13:31:13',11,13,2,'Юзер','Юзеров','Юзерович','1231320','ул пушкина',200.00,11,2);
+INSERT INTO `payment_documents` VALUES (3,'2-й квартал 2020',5144,'2020-12-23 11:07:52','2020-12-23 11:07:52',12,11,4,'Артём','Синкевич','Станиславович','56465135','вафывафыв',1000.00,2,1),(4,'25.12.2020',5133,'2020-12-23 11:33:25','2020-12-23 11:33:25',9,5,3,'Артём','Синкевич','Станиславович','48438163813','пр. Ленина 122 к. 2',100.00,4,1),(5,'25.12.2020',5153,'2020-12-24 13:31:13','2020-12-24 13:31:13',11,13,2,'Юзер','Юзеров','Юзерович','1231320','ул пушкина',200.00,11,2),(6,'Сентябрь 2020',5153,'2020-12-26 08:52:28','2020-12-26 08:52:28',9,7,1,'пфывпфывп','пыфвпфыв','фывпфывпфы','впфывпфыпф','ывпфвыпфпв',100.00,2,1);
 /*!40000 ALTER TABLE `payment_documents` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -704,6 +704,32 @@ INSERT INTO `recipients` VALUES (1,'Управление Федеральног�
 UNLOCK TABLES;
 
 --
+-- Table structure for table `roles`
+--
+
+DROP TABLE IF EXISTS `roles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `roles` (
+  `id` bigint unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `roles`
+--
+
+LOCK TABLES `roles` WRITE;
+/*!40000 ALTER TABLE `roles` DISABLE KEYS */;
+INSERT INTO `roles` VALUES (1,'admin',NULL,NULL),(2,'worker',NULL,NULL),(3,'client',NULL,NULL);
+/*!40000 ALTER TABLE `roles` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `subjects`
 --
 
@@ -778,9 +804,12 @@ CREATE TABLE `users` (
   `patronymic` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `inn` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` text COLLATE utf8mb4_unicode_ci,
+  `role_id` bigint unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  UNIQUE KEY `users_email_unique` (`email`),
+  KEY `users_role_id_foreign` (`role_id`),
+  CONSTRAINT `users_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -789,7 +818,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'admin','admin@admin.com',NULL,'$2y$10$3MUUShu0S3dWYIg2dTF85.KREUm4mF/YN/P0qsMfQtdIDIdf34oRO','4BWRUfWlX0YCWTJeYTKS4GCWXacZhd6nJIpcIEOQs06823hiA8eOgZy0XAm1','2020-10-31 16:20:53','2020-12-23 11:55:40','Артём','Синкевич','Станиславович','780204893183','пр. Ленина 122 к. 2'),(2,'user','user@user.com',NULL,'$2y$10$vxfZEZvg3imIsatH8iJqhuleRe6WdNTUNjUT4Vc40iAPA4xcGFYHK',NULL,'2020-12-24 13:27:25','2020-12-24 13:27:25',NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'admin','admin@admin.com',NULL,'$2y$10$3MUUShu0S3dWYIg2dTF85.KREUm4mF/YN/P0qsMfQtdIDIdf34oRO','xN0CcdvukYX1A5ZTkrB3G4Wf5UkOjuqkKr1nSMuJVh6WKp9AB9lWFLWBPxRu','2020-10-31 16:20:53','2020-12-23 11:55:40','Артём','Синкевич','Станиславович','780204893183','пр. Ленина 122 к. 2',1),(2,'user','user@user.com',NULL,'$2y$10$vxfZEZvg3imIsatH8iJqhuleRe6WdNTUNjUT4Vc40iAPA4xcGFYHK',NULL,'2020-12-24 13:27:25','2020-12-24 13:27:25','Пользователь','Пользователев','Пользователевич',NULL,NULL,3),(3,'worker','worker@worker.com',NULL,'$2y$10$b8rUo4BXhJtbDlMdVIKy7ezzFd9ZdL/MVnEPs4WwGPjsPG5DMTJ8C',NULL,'2020-12-26 08:21:34','2020-12-26 08:21:34','Работник','Работников','Работникович',NULL,NULL,2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -802,4 +831,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-25  0:12:38
+-- Dump completed on 2020-12-27 13:53:58

@@ -44,6 +44,6 @@ Route::post('/ajax/load-payer-statuses', [PaymentDocumentController::class, 'pay
 Route::post('/ajax/load-payment-bases', [PaymentDocumentController::class, 'paymentBases']);
 Route::post('/ajax/load-data-kinds', [PaymentDocumentController::class, 'dataKinds']);
 Route::post('/ajax/load-period-items', [PaymentDocumentController::class, 'periodItems']);
-Route::get('/ajax/load-fio', [PaymentDocumentController::class, 'fio']);
+Route::any('/ajax/load-fio', [PaymentDocumentController::class, 'fio']);
 Route::get('/ajax/load-ready', [PaymentDocumentController::class, 'ready']);
 Route::post('/ajax/load-kbk', [PaymentDocumentController::class, 'kbk']);

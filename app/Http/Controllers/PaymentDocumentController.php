@@ -69,10 +69,7 @@ class PaymentDocumentController extends Controller
             || !($date || ($periodItem && $year))
         )
         {
-            return json_encode([
-                'success' => false,
-                'error_code' => 'not_enough_data',
-            ]);
+            return 'Ошибка при создании документа';
         }
 
         // составляем строку данных
@@ -103,7 +100,11 @@ class PaymentDocumentController extends Controller
             $paymentDocument->address = $address;
             $paymentDocument->amount = $amount;
             $paymentDocument->payment_basis_id = $paymentBasis;
-            $paymentDocument->user_id = Auth::id();
+
+            if ($request->userId)
+                $paymentDocument->user_id = $request->userId;
+            else
+                $paymentDocument->user_id = Auth::id();
 
             $paymentDocument->save();
         }
@@ -234,8 +235,23 @@ class PaymentDocumentController extends Controller
         return view('parts.periodItem')->with(['periodItems' => $periodItems, 'periodId' => $request->id]);
     }
 
-    public function fio() {
-        return view('parts.fio', ['user' => Auth::user()]);
+    public function fio(Request $request) {
+        if ($request->id)
+        {
+            $user = User::find($request->id);
+            return json_encode([
+                'firstname' => $user->firstname,
+                'surname' => $user->surname,
+                'patronymic' => $user->patronymic,
+                'inn' => $user->inn,
+                'address' => $user->address,
+            ]);
+        }
+
+        return view('parts.fio', [
+            'user' => Auth::user(),
+            'users' => User::all()
+        ]);
     }
 
     public function ready() {
