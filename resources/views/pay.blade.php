@@ -8,7 +8,7 @@
                     <div class="row form-group mt-5">
                         <div class="col">
                             <h2>Тип налогоплательщика и вид расчетного документа</h2>
-                            <p class="mt-3">Налогоплательщик: Физическое лицо</p>
+                            <p class="mt-3">Налогоплательщик: {{ $payerType->name }}</p>
                             <p>Расчетный документ: Платежный документ</p>
                             <input type="hidden" value="{{ $id }}" name="payer_type" data-payer-type>
                         </div>

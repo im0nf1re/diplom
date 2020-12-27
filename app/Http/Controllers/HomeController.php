@@ -34,6 +34,9 @@ class HomeController extends Controller
 
     public function update(Request $request)
     {
+        if (Auth::id() != 1)
+            return redirect(route('main'));
+
         $user = Auth::user();
         $user->firstname = $request->firstname;
         $user->surname = $request->surname;

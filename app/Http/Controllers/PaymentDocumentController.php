@@ -38,7 +38,8 @@ class PaymentDocumentController extends Controller
             $id = $request->target == 'ip' ? 1 : 2;
             return view('pay')->with([
                 'subjects' => Subject::all(),
-                'id' => $id
+                'id' => $id,
+                'payerType' => PayerType::find($id),
             ]);
         }
         else
