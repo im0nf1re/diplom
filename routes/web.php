@@ -1,6 +1,7 @@
 <?php
 
 use Barryvdh\DomPDF\Facade as PDF;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentDocumentController;
 use App\Http\Controllers\MainController;
