@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Nalog.ru</title>
+    <title>Document-online.ru</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -19,13 +19,14 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/suggestions-jquery@20.3.0/dist/css/suggestions.min.css" rel="stylesheet" />
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    Nalog.ru
+                    Document-online
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -39,6 +40,9 @@
                         </li>
                         <li class="nav-item">
                             <a href="" class="nav-link" data-toggle="modal" data-target="#exampleModal">Уплата налогов</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('payment-request.create') }}" class="nav-link">Платежное требование</a>
                         </li>
                     </ul>
 
@@ -70,7 +74,10 @@
                                         Профиль
                                     </a>
                                     <a class="dropdown-item" href="{{ route('documents') }}">
-                                        Мои документы
+                                        Мои налоговые квитанции
+                                    </a>
+                                    <a class="dropdown-item" href="{{ route('payment-request.index') }}">
+                                        Мои платежные требования
                                     </a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
@@ -117,6 +124,54 @@
                 <div id="overlay">
                     <div class="cv-spinner">
                         <span class="spinner"></span>
+                    </div>
+                </div>
+
+                <!-- Button trigger modal -->
+                <button data-show-success style="display:none" type="button" class="btn btn-primary" data-toggle="modal" data-target="#savedSuccess">
+                    Запустить модальное окно
+                </button>
+                <!-- модалка сохранения документа в лк -->
+                <div class="modal fade" id="savedSuccess" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Документ сохранен</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                Документ успешно сохранен в личный кабинет
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Button trigger modal -->
+                <button data-show-error style="display:none" type="button" class="btn btn-primary" data-toggle="modal" data-target="#error">
+                    Запустить модальное окно
+                </button>
+                <!-- модалка ошибки -->
+                <div class="modal fade" id="error" tabindex="-1" role="dialog" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Ошибка</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                При выполнении операции произошла ошибка, пожалуйста, правильность введенных данных
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Закрыть</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
         </main>

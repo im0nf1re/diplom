@@ -45,6 +45,10 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\PaymentDocument');
     }
 
+    public function paymentRequests() {
+        return $this->hasMany('App\Models\PaymentRequest');
+    }
+
     public function role() {
         return $this->belongsTo('App\Models\Role');
     }

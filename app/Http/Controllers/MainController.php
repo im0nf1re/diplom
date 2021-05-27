@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bank;
+use App\Models\PaymentRequest;
 use Illuminate\Http\Request;
 use App\Models\PayerStatus;
 use App\Models\PaymentName;

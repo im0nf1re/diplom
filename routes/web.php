@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PaymentDocumentController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\PaymentRequestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,12 @@ use App\Http\Controllers\MainController;
 |
 */
 Route::get('/', [MainController::class, 'index'])->name('main');
+Route::get('/request/table/', [PaymentRequestController::class, 'table']);
+Route::resource('payment-request', PaymentRequestController::class);
+Route::post('/payment-request/download', [PaymentRequestController::class, 'download'])->name('payment-request.download');
+Route::get('/request-table/', [PaymentRequestController::class, 'table']);
+Route::get('/payment-request/download-from-lk/{id}', [PaymentRequestController::class, 'downloadFromLk']);
+
 Route::get('/pay/', [PaymentDocumentController::class, 'create']);
 Route::post('/store/', [PaymentDocumentController::class, 'store'])->name('store');
 

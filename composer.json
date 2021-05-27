@@ -18,7 +18,8 @@
         "laravel-lang/lang": "~7.0",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
-        "laravel/ui": "^3.0"
+        "laravel/ui": "^3.0",
+      "ext-intl": "*"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",
