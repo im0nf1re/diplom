@@ -32,6 +32,6 @@ class PaymentRequest extends Model
             default: $rub = 'рублей';
         }
 
-        return $str . ' ' . $rub . ' ' . $value[1] . ' копеек.';
+        return $str . ' ' . $rub . ($value[1] !== '00' ? ' ' . $value[1] . ' копеек.' : '');
     }
 }
